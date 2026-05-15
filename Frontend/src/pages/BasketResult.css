@@ -1,0 +1,101 @@
+:root{
+  --bg:#f3efe9; --card:#fff; --ring:#e5e7eb; --ink:#111827; --muted:#6b7280;
+  --radius:14px; --shadow:0 10px 24px rgba(0,0,0,.08);
+  --accent:linear-gradient(90deg,#22c55e,#f59e0b);
+  --green:#16a34a; --greenPanel:#22c55e; --notice:#fde68a;
+}
+
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.45 Inter,system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+
+.page{min-height:100vh;display:flex;flex-direction:column}
+
+/* Top bar */
+.topbar{
+  height:56px;background:#fff;border-bottom:1px solid var(--ring);
+  display:flex;align-items:center;justify-content:space-between;padding:0 16px
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.logo{font-size:20px}.brandText{font-size:18px}
+.right{display:flex;gap:10px}
+.ghost{border:1px solid var(--ring);padding:6px 10px;border-radius:10px;background:#fff;color:#111827;text-decoration:none}
+.iconBtn{border:1px solid var(--ring);background:#fff;border-radius:10px;padding:6px 8px;cursor:pointer}
+
+/* Headings */
+.main{max-width:1060px;margin:18px auto 40px;padding:0 16px}
+.title{margin:8px 0 2px;text-align:left;font-size:36px;font-weight:900}
+.title span{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{margin:0 0 16px;color:var(--muted)}
+.subtitle .money{color:#16a34a}.subtitle .subs{color:#f59e0b}
+
+/* Savings banner */
+.savingsCard{
+  background:var(--greenPanel);color:#fff;border-radius:16px;padding:14px 16px;margin:8px 0 18px;
+  box-shadow:var(--shadow)
+}
+.savingsCard .row{display:flex;align-items:flex-end;justify-content:space-between}
+.savingsCard .label{opacity:.95;font-weight:700}
+.savingsCard .big{font-size:28px;font-weight:900;line-height:1.1}
+.savingsCard .tiny{opacity:.9;font-size:12px}
+
+/* Header row w/ controls */
+.resultsHeader{display:flex;align-items:center;justify-content:space-between;margin:8px 0 4px}
+.resultsHeader h2{margin:0;font-size:18px}
+.controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.pill{
+  border:1px solid var(--ring);background:#fff;border-radius:999px;padding:6px 12px;
+  font-weight:700;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.06)
+}
+.prefs{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.prefsLabel{font-size:12px;color:var(--muted);margin-right:2px}
+.chip{background:#eef2ff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-weight:700}
+
+/* small summary line */
+.summaryLine{color:#6b7280;font-size:12px;margin:2px 0 12px}
+
+/* Groups & items */
+.group{margin-bottom:14px}
+.groupHeader{display:flex;align-items:center;gap:8px;color:#6b7280;margin:6px 0}
+.cat{
+  background:#f3f4f6;border:1px solid var(--ring);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:700;color:#6b7280
+}
+.count{font-size:12px}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.itemCard{
+  background:#fff;border:1px solid var(--ring);border-radius:12px;box-shadow:0 8px 16px rgba(0,0,0,.06);
+  overflow:hidden
+}
+.itemMain{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px
+}
+.name{font-weight:800}
+.meta{display:flex;align-items:center;gap:10px}
+.price{font-weight:800}
+
+/* lock button */
+.lock{
+  border:1px solid var(--ring);background:#fff;border-radius:10px;padding:6px 8px;cursor:pointer
+}
+.lock.on{background:#f3f4f6}
+
+/* Switch */
+.switch{position:relative;display:inline-block;width:44px;height:24px}
+.switch input{opacity:0;width:0;height:0}
+.slider{
+  position:absolute;cursor:pointer;inset:0;background:#e5e7eb;border-radius:999px;transition:.2s;
+}
+.slider:before{
+  content:"";position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.2)
+}
+.switch input:checked + .slider{background:#22c55e}
+.switch input:checked + .slider:before{transform:translateX(20px)}
+
+/* Notice bar when locked */
+.notice{
+  background:#fff7d6;border-top:1px solid #f5e6a6;color:#92400e;padding:8px 12px;font-size:13px
+}
+
+@media (max-width:640px){
+  .title{font-size:30px}
+}

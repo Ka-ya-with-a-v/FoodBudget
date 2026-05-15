@@ -1,0 +1,92 @@
+:root{
+  --bg:#f3efe9; --card:#fff; --ring:#e5e7eb; --ink:#111827; --muted:#6b7280;
+  --radius:16px; --shadow:0 10px 24px rgba(0,0,0,.10);
+  --green:#16a34a; --accent:linear-gradient(90deg,#22c55e,#f59e0b);
+}
+
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.45 Inter, system-ui, Segoe UI, Roboto, sans-serif;color:var(--ink);background:var(--bg)}
+.page{min-height:100vh;display:flex;flex-direction:column}
+
+/* Topbar */
+.topbar{
+  height:56px;background:#fff;border-bottom:1px solid var(--ring);
+  display:flex;align-items:center;justify-content:space-between;padding:0 16px
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.logo{font-size:20px}.brandText{font-size:18px}
+.right{display:flex;gap:8px}
+.ghost{border:1px solid var(--ring);background:#fff;border-radius:10px;padding:6px 10px;text-decoration:none;color:#111827}
+.iconBtn{border:1px solid var(--ring);background:#fff;border-radius:10px;padding:6px 8px;cursor:pointer}
+
+/* Header */
+.main{max-width:980px;margin:18px auto 36px;padding:0 16px}
+.title{margin:8px 0 10px;text-align:center;font-weight:900;font-size:34px}
+.title span{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Container */
+.container{
+  background:#fff;border:1px solid var(--ring);border-radius:20px;padding:16px;
+  box-shadow:var(--shadow)
+}
+
+/* Scrollable results wrapper */
+.results-wrapper {
+  max-height:60vh;       /* limit vertical height */
+  overflow-y:auto;       /* enable scrolling */
+  padding-right:8px;     /* space for scrollbar */
+  margin-top:16px;
+}
+
+/* Cards */
+.resultCard{padding:14px}
+.resultCard + .resultCard{margin-top:18px}
+.inner{
+  border:1px solid var(--ring);border-radius:12px;background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.07);
+  padding:14px 16px
+}
+.rowTop{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px
+}
+.mealTitle{font-weight:900}
+.stall{color:var(--muted);font-size:14px}
+
+.saveBadge{
+  background:#dcfce7;color:#166534;border-radius:999px;padding:6px 10px;font-weight:800;font-size:12px
+}
+
+.desc{margin:6px 0 8px;color:#374151}
+
+/* meta / price row */
+.rowMeta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.meta{color:#4b5563;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.price{margin-left:auto;display:flex;align-items:center;gap:10px}
+.old{text-decoration:line-through;color:#9ca3af}
+.new{font-weight:900}
+
+/* address row */
+.rowAddress{
+  display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin:12px 0 8px
+}
+.pill.cuisine{
+  background:#fee2e2;color:#b45309;border-radius:999px;padding:4px 8px;font-weight:800;font-size:12px
+}
+.addr{color:#6b7280;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btnDirections{
+  border:1px solid var(--ring);background:#fff;border-radius:10px;padding:6px 10px;font-weight:700;
+  text-decoration:none;color:#111827
+}
+
+/* bottom savings row */
+.rowSavings{
+  display:flex;align-items:center;justify-content:space-between;background:#f8fafc;border:1px solid var(--ring);
+  border-radius:10px;padding:8px 10px
+}
+.hint{color:#6b7280;font-size:12px}
+.amt{font-weight:900}
+
+/* responsive */
+@media (max-width:640px){
+  .rowAddress{grid-template-columns:1fr;gap:6px}
+  .price{margin-left:0}
+}

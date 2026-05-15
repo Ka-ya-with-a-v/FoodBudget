@@ -1,0 +1,122 @@
+.navbar {
+    position: fixed;      /* makes it stick to the viewport */
+    top: 0;               /* stick to top */
+    left: 0;
+    width: 100%;          /* full width */
+    height: 64px;         /* whatever height you want */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0 1.5rem;
+    z-index: 9999;        /* above all your dashboard content */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+
+/* Logo */
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-right: 40px; /* space between logo text and links */
+}
+
+.navbar-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar-logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Links */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    font-weight: 500;
+    color: #000;
+    transition: color 0.2s ease;
+}
+
+/* Underline hover effect */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #f97316;
+    transition: width 0.25s ease-in-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #f97316;
+}
+
+.nav-link.active {
+    font-weight: 600;
+    color: #f97316;
+}
+
+.nav-user-label {
+    margin-left: 0.35rem;
+    font-size: 0.9rem;
+}
+
+/* Hamburger icon */
+.navbar-toggle {
+    display: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #000;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .navbar-links {
+        position: absolute;
+        top: 56px;
+        right: 0;
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px;
+        display: none;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-logo-container {
+        margin-right: 0; /* reset spacing on mobile */
+    }
+}

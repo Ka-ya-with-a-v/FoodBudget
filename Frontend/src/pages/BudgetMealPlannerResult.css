@@ -1,0 +1,566 @@
+/* BudgetPlannerResult.css */
+:root {
+  --bg: #f3efe9;
+  --card: #fff;
+  --ink: #111827;
+  --muted: #6b7280;
+  --ring: #e5e7eb;
+  --ok: #16a34a;
+  --warn: #f97316;
+  --shadow: 0 10px 26px rgba(0,0,0,.10);
+  --radius: 14px;
+}
+
+/* Reset / base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, Segoe UI, Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page shell */
+.bp-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  width: 100vw; 
+}
+
+/* Make the main area scrollable.
+   We reserve a bit of vertical space for top header / metrics.
+   Adjust the 140px if your header+metrics area is taller. */
+.bp-main {
+  max-width: none; 
+  margin: 18px 0 20px; 
+  padding: 0 5%; 
+  flex: 1 1 auto;
+
+  /* vertical scroll */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* ensure main does not exceed viewport leaving header toolbar space */
+  max-height: calc(100vh - 80px); 
+  width: 100%;
+}
+
+/* Header */
+.bp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 6px 0 14px;
+}
+
+.bp-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.bp-header-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-width: 240px;
+}
+
+.bp-save-plan {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.bp-save-input {
+  width: 100%;
+  min-width: 220px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ring);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  background: #fff;
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bp-save-input:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+.bp-save-button {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: linear-gradient(90deg, #22c55e, #f97316);
+  color: #fff;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.bp-save-button:hover {
+  transform: translateY(-1px);
+}
+
+.bp-save-button:disabled {
+  cursor: default;
+  opacity: 0.65;
+  transform: none;
+}
+
+.bp-save-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.bp-save-status.error {
+  color: #b91c1c;
+}
+
+.bp-save-status.success {
+  color: #15803d;
+}
+
+.bp-title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 40px;
+  text-align: left;
+}
+
+.bp-title span {
+  background: linear-gradient(90deg, #22c55e, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.return-to-setup-button {
+  border: 1px solid var(--ring);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-size: 14px;
+  align-self: flex-start;
+  color: #4b5563;
+}
+
+.return-to-setup-button:hover {
+  background: #f8fafc;
+  border-color: #d1d5db;
+  color: #111827;
+}
+
+/* Metrics band (kept visible above scroll by placing it before .bp-main or inside
+   .bp-main as first child — your JSX places metrics inside .bp-main so it will scroll.
+   If you want metrics to be fixed while only list scrolls, we can change DOM or CSS;
+   currently we simply keep metrics inside main and allow whole main to scroll.) */
+.bp-metrics {
+  background: #fff;
+  border: 1px solid var(--ring);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 14px 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.bp-metric {
+  text-align: center;
+}
+
+.bp-metric-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ea7f1a;
+}
+
+.bp-metric-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.bp-metric-budget .bp-metric-sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.bp-budget-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 900;
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.bp-budget-pill.ok {
+  background: #dcfce7;
+  color: var(--ok);
+}
+
+.bp-budget-pill.over {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+/* List / day cards */
+.bp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Each day card */
+.bp-day-card {
+  background: #fff;
+  border: 1px solid var(--ring);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* Day header */
+.bp-day-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--ring);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.bp-day-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.bp-day-cost {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Meals list */
+.bp-meals-list {
+  padding: 0;
+}
+
+/* Individual meal row */
+.bp-meal-card {
+  border-bottom: 1px solid var(--ring);
+  position: relative;
+}
+
+.bp-meal-card:last-child {
+  border-bottom: none;
+}
+
+.bp-meal-main {
+  padding: 16px 20px;
+}
+
+.bp-meal-info {
+  width: 100%;
+}
+
+.bp-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.bp-tag {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  border: 1px solid var(--ring);
+  background: #f8fafc;
+  color: #374151;
+}
+
+/* Tag color variations */
+.bp-tag.breakfast { background: #fde68a; color: #92400e; border-color: #facc15; }
+.bp-tag.lunch { background: #e0f2fe; color: #075985; border-color: #bae6fd; }
+.bp-tag.dinner { background: #e9d5ff; color: #6b21a8; border-color: #d8b4fe; }
+.bp-tag.snack { background: #dcfce7; color: #166534; border-color: #a7f3d0; }
+.bp-tag.vegetarian { background: #dcfce7; color: #166534; border-color: #a7f3d0; }
+.bp-tag.vegan { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+.bp-tag.halal { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+.bp-tag.glutenfree { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.bp-tag.lowcarb { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
+.bp-tag.highprotein { background: #fce7f3; color: #9d174d; border-color: #fbcfe8; }
+
+.bp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bp-meal-details {
+  flex: 1;
+}
+
+.bp-meal-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bp-meta {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.bp-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.bp-price {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.bp-dot {
+  margin: 0 0.5ch;
+  color: #cbd5e1;
+}
+
+/* Actions */
+.bp-actions {
+  display: flex;
+  align-items: center;
+}
+
+.bp-swap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--ring);
+  background: #7069cb;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.bp-swap:hover {
+  background: #f8fafc;
+  border-color: #d1d5db;
+}
+
+.bp-swap-icon {
+  font-weight: 900;
+  opacity: 0.8;
+}
+
+/* Alternatives modal */
+.bp-alternatives-modal {
+  background: #f8fafc;
+  border-top: 1px solid var(--ring);
+  padding: 16px 20px;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bp-alternatives-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.bp-alternatives-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bp-close-alternatives {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.bp-close-alternatives:hover {
+  background: #e5e7eb;
+}
+
+.bp-alternatives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bp-alternative-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--ring);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.bp-alternative-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.bp-alternative-info {
+  flex: 1;
+}
+
+.bp-alternative-tags {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.bp-alternative-name {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bp-alternative-meta {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.bp-select-alternative {
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.bp-select-alternative:hover {
+  background: #16a34a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bp-title {
+    font-size: 32px;
+  }
+  
+  .bp-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  .bp-header-left {
+    align-items: stretch;
+  }
+  
+  .return-to-setup-button {
+    align-self: flex-start;
+  }
+  
+  .bp-metrics {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .bp-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .bp-actions {
+    justify-content: flex-start;
+  }
+  
+  .bp-alternative-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .bp-select-alternative {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .bp-main {
+    max-height: calc(100vh - 64px);
+    margin: 12px;
+  }
+
+  .bp-day-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .bp-day-cost {
+    align-self: flex-end;
+  }
+}

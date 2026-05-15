@@ -1,0 +1,97 @@
+:root{
+  --bg:#f3efe9; --card:#ffffff; --ring:#e5e7eb; --ink:#111827; --muted:#6b7280;
+  --accent:linear-gradient(90deg,#22c55e,#f59e0b);
+  --radius:16px; --shadow:0 10px 25px rgba(0,0,0,.08);
+  --blueFill:#eaf2ff; /* light blue inputs */
+}
+
+*{box-sizing:border-box}
+html, body, #root { height: 100%; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.45 Inter,system-ui,Segoe UI,Roboto,sans-serif;
+}
+
+.signup-page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Centered auth section */
+.signup-auth{
+  width:100vw;
+  min-height:calc(100vh - 56px); /* minus navbar */
+  display:grid;
+  place-items:center;
+  padding:24px 16px;
+}
+
+.signup-box{
+  width:min(460px, 92vw);
+  text-align:center;
+}
+
+/* Headings */
+.signup-title{margin:6px 0 6px;font-size:38px;font-weight:900}
+.signup-title span{
+  background:var(--accent);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.signup-subtitle{margin:0 0 16px;color:var(--muted)}
+
+/* Card */
+.signup-card{
+  background:#fff;
+  border:1px solid var(--ring);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+  width:100%;
+  text-align:left;
+  margin-top:1rem;
+}
+
+/* Form */
+.signup-form{display:flex;flex-direction:column;gap:12px}
+.signup-field{display:flex;flex-direction:column;gap:6px}
+
+.signup-label{font-size:12px;color:#6b7280}
+
+.signup-input{
+  padding:12px 14px;
+  border:1px solid var(--ring);
+  border-radius:10px;
+  background: var(--blueFill);   /* light blue fill */
+  color:#111827;                 /* ensure typed text is black/dark */
+  outline:none;
+}
+.signup-input::placeholder{color:#6b7280}
+.signup-input:focus{box-shadow:0 0 0 3px rgba(99,102,241,.15);border-color:#a5b4fc}
+
+/* Error */
+.signup-error{
+  background:#fef2f2;color:#991b1b;border:1px solid #fecaca;border-radius:10px;
+  padding:10px 12px;font-weight:600
+}
+
+/* Button */
+.signup-btn{
+  margin-top:4px;border:none;border-radius:10px;padding:12px 18px;
+  background:var(--accent);color:#fff;font-weight:900;cursor:pointer;box-shadow:var(--shadow)
+}
+.signup-btn:disabled{opacity:.7;cursor:not-allowed}
+
+/* Footer */
+.signup-foot{margin:8px 0 0;text-align:center;color:#6b7280}
+.signup-link{color:#2563eb;text-decoration:none;font-weight:700}
+.signup-link:hover{text-decoration:underline}
+
+@media (max-width:420px){
+  .signup-title{font-size:32px}
+}

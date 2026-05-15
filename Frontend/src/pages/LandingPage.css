@@ -1,0 +1,147 @@
+/* Page base */
+.landing-page {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hero Section */
+.hero {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 3rem 5vw; /* use viewport padding for responsiveness */
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 5rem;
+  box-sizing: border-box;
+}
+
+/* Stack layout for small screens */
+@media (max-width: 1023px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+}
+
+/* Text styling */
+.hero-content {
+  text-align: left;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.6rem, 4vw + 1rem, 4.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.hero-content .green {
+  color: #10b981;
+}
+
+.hero-content .orange {
+  color: #f97316;
+}
+
+.hero-content p {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 0.8vw + 0.8rem, 1.35rem);
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+/* Feature buttons */
+.features {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature {
+  padding: 1rem 1.25rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.feature.red {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.feature.green {
+  background: #dcfce7;
+  color: #10b981;
+}
+
+.feature.orange {
+  background: #ffedd5;
+  color: #f97316;
+}
+
+.feature.blue {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+.feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Image styling */
+.hero-image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  margin-right: -5vw; /* pushes image flush to the right edge */
+}
+
+/* On large screens */
+@media (min-width: 1440px) {
+  .hero {
+    padding: 4rem 6vw;
+    gap: 6rem;
+  }
+
+  .hero-image img {
+    margin-right: -6vw; /* visually extends image to edge */
+  }
+}
+
+
+

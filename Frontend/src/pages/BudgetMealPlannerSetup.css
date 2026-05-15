@@ -1,0 +1,318 @@
+:root {
+  --bg: #f3efe9;
+  --card: #fff;
+  --ink: #111827;
+  --muted: #6b7280;
+  --ring: #e5e7eb;
+  --ok: #16a34a;
+  --warn: #f97316;
+  --shadow: 0 10px 26px rgba(0,0,0,.10);
+  --radius: 14px;
+}
+
+/* allow scrolling */
+html, body {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, Segoe UI, Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-y: auto; /* scroll allowed */
+}
+
+/* Page shell */
+.setup-page {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 0 var(--side-pad);
+  background: var(--bg);
+}
+
+.setup-container {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+
+.setup-title {
+  margin: 0 0 10px 0;
+  font-weight: 900;
+  font-size: 36px;
+  text-align: center;
+}
+
+.setup-title span {
+  background: linear-gradient(90deg, #22c55e, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.setup-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.setup-card {
+  background: #fff;
+  border: 1px solid var(--ring);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.setup-form { width: 100%; }
+
+.form-block {
+  margin-bottom: 18px;
+  border: none;
+  padding: 0;
+}
+
+.form-block.compact { margin-bottom: 14px; }
+
+.form-block legend {
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--ink);
+  width: 100%;
+}
+
+/* grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.form-group { display: flex; flex-direction: column; }
+
+.form-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+/* inputs/selects */
+.form-input, .form-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--ring);
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  color: #000 !important;
+  border-color: #d1d5db;
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: #22c55e;
+  color: #000 !important;
+}
+
+.form-input::placeholder { color: var(--muted); }
+
+/* $ prefix */
+.input-with-prefix {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.prefix {
+  position: absolute;
+  left: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  z-index: 1;
+  font-size: 14px;
+}
+.input-with-prefix .form-input { padding-left: 28px; }
+
+/* calories row */
+.calories-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.calories-group { flex: 1; }
+.calories-separator {
+  color: var(--muted);
+  font-weight: 700;
+  margin-top: 24px;
+}
+
+/* tags row */
+.tags-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tag-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 10px;
+  background: #f8fafc;
+  border: 1px solid var(--ring);
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tag-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.tag-checkbox span {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+/* actions */
+.form-actions {
+  margin-top: 22px;
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--ring);
+}
+.submit-btn {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+  min-width: 200px;
+}
+.submit-btn:hover:not(:disabled) { background: #16a34a; }
+.submit-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+.error-message {
+  color: #ef4444;
+  display: block;
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ---------- LARGE MODE (scrollable + bigger everything) ---------- */
+.setup-page.large .setup-container { padding: 32px 28px !important; }
+.setup-page.large .setup-title { font-size: 48px !important; }
+.setup-page.large .setup-subtitle { font-size: 18px !important; }
+
+.setup-page.large .setup-card {
+  padding: 36px !important;
+  border-radius: 18px !important;
+}
+
+.setup-page.large .form-block legend {
+  font-size: 22px !important;
+  margin-bottom: 14px !important;
+}
+
+.setup-page.large .form-grid { gap: 20px !important; }
+
+.setup-page.large .form-label { font-size: 16px !important; }
+
+.setup-page.large .form-input,
+.setup-page.large .form-select {
+  font-size: 18px !important;
+  padding: 16px 18px !important;
+  border-radius: 12px !important;
+}
+
+.setup-page.large .prefix { font-size: 16px !important; left: 14px !important; }
+.setup-page.large .input-with-prefix .form-input { padding-left: 34px !important; }
+
+.setup-page.large .calories-row { gap: 14px !important; }
+.setup-page.large .calories-separator { margin-top: 28px !important; }
+
+.setup-page.large .tag-checkbox { padding: 8px 12px !important; }
+.setup-page.large .tag-checkbox span { font-size: 14px !important; }
+.setup-page.large .tag-checkbox input[type="checkbox"] {
+  width: 18px !important; height: 18px !important;
+}
+
+.setup-page.large .submit-btn {
+  padding: 16px 28px !important;
+  font-size: 18px !important;
+  border-radius: 12px !important;
+  min-width: 220px !important;
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+  .setup-container { padding: 20px; max-width: 100%; }
+  .form-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
+@media (max-width: 768px) {
+  .setup-card { padding: 22px; }
+  .setup-title { font-size: 32px; }
+  .calories-row { flex-direction: column; gap: 10px; }
+  .calories-separator { margin-top: 0; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .setup-container { padding: 16px; }
+  .setup-card { padding: 18px; }
+  .setup-title { font-size: 28px; }
+  .tags-row { gap: 8px; }
+  .tag-checkbox { padding: 6px 10px; font-size: 12px; }
+  .submit-btn { padding: 12px 22px; font-size: 15px; min-width: 180px; }
+}
+/* ==== FORCE PAGE TO SCROLL (drop at very end) ==== */
+html, body, #root {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+}
+
+.setup-page,
+.setup-container {
+  height: auto !important;
+  min-height: auto !important;
+  overflow-y: auto !important;
+}
+
+/* If your Navbar is position:fixed, make room so content can extend below it */
+.setup-container {
+  padding-top: 80px !important;  /* adjust to your navbar height */
+}
+
+/* Safety: prevent any ancestor from blocking scroll */
+*,
+*:before,
+*:after {
+  overscroll-behavior: auto !important;
+}
+
+/* If some global rule set overflow hidden on body/html, this wins */
+body {
+  overflow: auto !important;
+}
+
